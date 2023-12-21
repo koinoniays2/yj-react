@@ -1,7 +1,6 @@
 import "./App.css";
 
 function App() {
-  const name = "리액트";
   return (
     <>
       <header className="header">

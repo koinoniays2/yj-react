@@ -10,7 +10,7 @@ const WhiteBox = (props) => {
             <div className="flex">
                 <div className="mr-[10px] mt-[20px] w-[100px] h-[40px] rounded-3xl bg-blue-500
                 flex justify-center items-center text-sm text-white">구입하기</div>
-                <div className="mt-[20px] w-[100px] h-[40px] rounded-3xl
+                <div className="mt-[20px] w-[100px] h-[40px]
                 flex justify-center items-center text-sm text-blue-500">더 알아보기 &gt;</div>
             </div>
         </div>

@@ -1,9 +1,9 @@
-import 강쥐 from './images/강쥐.jpg';
+import dog from './images/dog.jpg';
 export default function Header() {
     return (
         <header className='w-full h-[400px] bg-gray-500 flex justify-center items-center relative overflow-hidden'>
             <div className="absolute top-0 right-0 -rotate-12 scale-[2]">
-                <img src={강쥐} alt="강아지" className="w-[500px] h-[400px] object-cover"/>
+                <img src={dog} alt="강아지" className="w-[500px] h-[400px] object-cover"/>
             </div>
             <div className="w-[1000px]">
                 <div className="flex flex-col">

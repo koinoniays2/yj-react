@@ -3,8 +3,7 @@ import React, { useEffect, useState } from 'react'
 export default function Marvel() {
     const [lists, setLists] = useState([]);
     useEffect(() => {
-        fetch("https://gateway.marvel.com:443/v1/public/comics?apikey=ffc43cbb3dccf31c32c2e2d5ea084434"
-        )
+        fetch("https://gateway.marvel.com:443/v1/public/comics?apikey=ffc43cbb3dccf31c32c2e2d5ea084434")
         .then(response  => response.json())
         .then(data => {
             setLists(data?.data?.results);
@@ -24,10 +23,8 @@ export default function Marvel() {
                     <div className="font-bold text-sm text-center">
                        {item.title} 
                     </div>
-                    {/* 설명 */}
-                    </div>
-                )
-            )}
+                </div>
+                ))}
         </section>
     </div>
   )

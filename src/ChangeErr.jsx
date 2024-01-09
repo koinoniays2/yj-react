@@ -6,9 +6,8 @@ export default function ChangeErr() {
     function onChange (e) {
         setValue(e.target.value);
         const length = (e.target.value).length;
-        length > 5 ? setText("5글자까지 입력해주세요.") : setText("올바른 아이디입니다.");
+        length > 5 ? setText("5글자까지 입력해주세요.") : setText("");
     }
-    console.log(value);
   return (
     <div>
         <input className="border-2" type="text" value={value} onChange={onChange} />

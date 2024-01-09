@@ -2,8 +2,9 @@
 // import Info from "./Info";
 // import Login from "./Login";
 // import Password from "./Password";
+// import ChangeErr from "./ChangeErr";
 
-import ChangeErr from "./ChangeErr";
+import TestUseEffect from "./TestUseEffect";
 
 
 export default function App() {
@@ -13,7 +14,9 @@ export default function App() {
       {/* <Info /> */}
       {/* <Login /> */}
       {/* <Password /> */}
-      <ChangeErr />
+      {/* <ChangeErr /> */}
+
+      <TestUseEffect />
     </div>
   );
 }

@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-export default function TrendingPage() {
+export default function Movie() {
     const [lists, setLists] = useState([]);
     let tabs = [
-      {id: "all", label: "All"}, //id:패치요청 url에서 바뀔 값, label:탭바 내용 
-      {id: "movie", label:"Movies"},
-      {id: "tv", label:"TV"}
+      {id: "now_playing", label: "NowPlaying"}, //id:패치요청 url에서 바뀔 값, label:탭바 내용 
+      {id: "top_rated", label:"TopRated"},
+      {id: "upcoming", label:"UpComing"}
 
     ];
     //클릭 시 url 주소 내용 변경(기본값은 all)
@@ -17,14 +16,12 @@ export default function TrendingPage() {
 
     // API 요청
     useEffect(() => {
-    const url =
-      `https://api.themoviedb.org/3/trending/${activeTab}/day?language=en-US`;
+    const url =`https://api.themoviedb.org/3/movie/${activeTab}?language=en-US&page=1`;
     const options = {
       method: "GET",
       headers: {
         accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwOWNhODU3NDBjOWVlYzc4ZTU1ZTQ2NDA1MWE4NTRjNiIsInN1YiI6IjY1OWNhMTg3NTVjMWY0MDFhNDZlMzMxNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.V7UIZD9fGetrKMwieqk-VeRqr2hl3tDlLO_VwMHDvC4",
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwOWNhODU3NDBjOWVlYzc4ZTU1ZTQ2NDA1MWE4NTRjNiIsInN1YiI6IjY1OWNhMTg3NTVjMWY0MDFhNDZlMzMxNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.V7UIZD9fGetrKMwieqk-VeRqr2hl3tDlLO_VwMHDvC4'
       },
     };
     fetch(url, options)
@@ -45,19 +42,15 @@ export default function TrendingPage() {
   };
   return (
     <div className="w-full flex justify-center">
-      <div className="w-[1300px] h-[400px] pt-8">
+      <div className="w-[1300px] h-[400px] pt-20">
         {/* 타이틀 */}
         <div className="flex">
-          <h2 className="px-4 py-2 font-semibold text-[24px]">Trending</h2>
+          <h2 className="px-4 py-2 font-semibold text-[24px]">Movie</h2>
           {/* 탭바 */}
-          <div className="border-2 border-gray-900 rounded-3xl">
+          <div className="border-2 border-gray-900 rounded-full">
             {tabs.map(tab => (
               <button key={tab.id} onClick={() => {setActiveTab(tab.id)}} 
-              className={`${activeTab === tab.id ? "text-white" : "text-black"} relative rounded-full px-6 py-2 text-xl font-semibold transition`}>
-                {activeTab === tab.id && (
-                  <motion.span layoutId="bubble" transition={{type: "spring", bounce: 0.2, duration: 0.6}}
-                  className="absolute inset-0 bg-gray-900 rounded-full -z-10" />
-                )}
+              className={`${activeTab === tab.id ? "bg-black text-white" : "text-black"} relative rounded-full px-6 py-3 text-xl font-semibold`}>
                 {tab.label}
               </button>
             ))}

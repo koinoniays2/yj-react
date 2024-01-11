@@ -14,9 +14,8 @@ export default function SearchPage() {
           </div>
           {/* 인풋박스 */}
           <div className='relative'>
-            <input className='w-full py-3 px-4 text-gray-900 outline-none rounded-3xl' type='text' placeholder='Search for movie, TV show, person ...' />
-            <button className='font-semibold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 py-3 px-8 rounded-3xl 
-            absolute right-0 hover:text-black'>Search</button>
+            <input className="w-full py-3 px-4 text-gray-900 outline-none rounded-3xl" type="text" placeholder="Search for movie, TV show, person ..." />
+            <button className="absolute text-black right-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 py-3 px-6 rounded-3xl font-semibold hover:text-black">Search</button>
           </div>
         </div>
         <div></div>

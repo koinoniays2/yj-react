@@ -1,6 +1,7 @@
 import Logo from "../assets/logo.png"; 
 import { BiPlusMedical } from "react-icons/bi";
 import { FaBell, FaSearch } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 
 
@@ -13,12 +14,12 @@ export default function NavPage() {
             <div className="h-full flex space-x-8">
                 {/* 로고 */}
                 <div className="h-full w-[200px] flex items-center">
-                    <img src={Logo} alt="main logo" />
+                    <Link to={"/"}><img src={Logo} alt="main logo" /></Link>
                 </div>
                 {/* 메뉴영역 */}
                 <div className="h-full flex items-center text-white font-bold space-x-6">
-                    <p>Movies</p>
-                    <p>TV Shows</p>
+                    <Link to="/movies"><p>Movies</p></Link>
+                    <Link to="/tv"><p>TV Shows</p></Link>
                     <p>People</p>
                     <p>more</p>
                 </div>

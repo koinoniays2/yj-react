@@ -43,6 +43,7 @@ export default function TrendingPage() {
     autoplay: true,
     autoplaySpeed: 2000
   };
+
   return (
     <div className="w-full flex justify-center">
       <div className="w-[1300px] h-[400px] pt-8">
@@ -50,10 +51,10 @@ export default function TrendingPage() {
         <div className="flex">
           <h2 className="px-4 py-2 font-semibold text-[24px]">Trending</h2>
           {/* 탭바 */}
-          <div className="border-2 border-gray-900 rounded-3xl">
+          <div className="border-2 border-gray-900 rounded-full">
             {tabs.map(tab => (
               <button key={tab.id} onClick={() => {setActiveTab(tab.id)}} 
-              className={`${activeTab === tab.id ? "text-white" : "text-black"} relative rounded-full px-6 py-2 text-xl font-semibold transition`}>
+              className={`${activeTab === tab.id ? "text-white" : "text-black"} relative rounded-full px-6 py-3 text-xl font-semibold`}>
                 {activeTab === tab.id && (
                   <motion.span layoutId="bubble" transition={{type: "spring", bounce: 0.2, duration: 0.6}}
                   className="absolute inset-0 bg-gray-900 rounded-full -z-10" />
@@ -69,7 +70,7 @@ export default function TrendingPage() {
               {lists.map((item, index) => (
                   <article key={index} className="w-full flex justify-center">
                       <div className="flex flex-col items-center">
-                          <img className="" src={`https://image.tmdb.org/t/p/w200${item.backdrop_path}`} alt="이미지"/>
+                          <img className="" src={`https://image.tmdb.org/t/p/w200${item.backdrop_path}`} alt="이미지" />
                           <p className="font-bold text-center text-lg">{item.title}</p>
                           <p className="text-ml text-gray-500">{item.release_date}</p>
                       </div>

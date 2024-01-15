@@ -14,7 +14,7 @@ export default function Movie() {
   const [activeTab, setActiveTab] = useState(tabs[0].id);
   // API 요청
   useEffect(() => {
-    const url = `https://api.themoviedb.org/3/movie/${activeTab}?language=en-US&page=1`;
+    const url = `https://api.themoviedb.org/3/movie/${activeTab}?language=ko-KR&page=1`;
     const options = {
       method: "GET",
       headers: {

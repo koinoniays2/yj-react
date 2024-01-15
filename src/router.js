@@ -2,7 +2,8 @@ import { Outlet, createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import NotFound from "./routes/NotFound";
 import Movies from "./routes/Movies";
-import Tv from "./routes/Tv";
+import TV from "./routes/TV";
+import Detail from "./components/Detail";
 
 const router = createBrowserRouter([
     {
@@ -20,7 +21,11 @@ const router = createBrowserRouter([
         },
         {
           path: "/tv",
-          element: <Tv />
+          element: <TV />
+        },
+        {
+          path: "/detail/:id", // 주소창에 변수를 넣는것 /:변수명
+          element: <Detail />
         },
       ]
     }

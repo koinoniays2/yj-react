@@ -1,12 +1,8 @@
 import React from 'react'
-import Layout from '../components/Layout'
+import TopBar from '../components/TopBar'
 
 export default function Tv() {
   return (
-    <Layout>
-        <div className="w-full py-32 flex justify-center">
-            <h1 className="text-3xl font-bold">TV</h1>
-        </div>
-    </Layout>
+    <TopBar url="https://api.themoviedb.org/3/tv/popular?language=ko-KR&page=" name="tv"/>
   )
 }

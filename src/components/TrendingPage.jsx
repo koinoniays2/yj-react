@@ -4,9 +4,12 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Link } from "react-router-dom";
+// import ClipLoader from "react-spinners/ClipLoader";
+import { ClimbingBoxLoader } from "react-spinners";
 
 export default function TrendingPage() {
     const [lists, setLists] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
     let tabs = [
       {id: "all", label: "All"}, //id:패치요청 url에서 바뀔 값, label:탭바 내용 
       {id: "movie", label:"Movies"},
@@ -28,12 +31,14 @@ export default function TrendingPage() {
           "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwOWNhODU3NDBjOWVlYzc4ZTU1ZTQ2NDA1MWE4NTRjNiIsInN1YiI6IjY1OWNhMTg3NTVjMWY0MDFhNDZlMzMxNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.V7UIZD9fGetrKMwieqk-VeRqr2hl3tDlLO_VwMHDvC4",
       },
     };
+    setIsLoading(true); // 패치요청을 받을때 까지 로딩 true
     fetch(url, options)
       .then((res) => res.json())
       .then((json) => {
         setLists(json?.results);
       })
       .catch((err) => console.error("error:" + err));
+      setIsLoading(false); // 패치 요청이 끝나면 false
   }, [activeTab]);
   const settings = {
     dots: true,
@@ -66,21 +71,32 @@ export default function TrendingPage() {
           </div>
         </div>
         {/* 리스트 */}
-        <div className="w-full h-[350px] bg-main flex flex-col justify-center">
-          <Slider {...settings}>
-              {lists.map((item, index) => (
-                  <article key={index} className="w-full flex justify-center">
-                      <Link to={`/detail/${item.id}`} key={item.id}>
-                        <div className="flex flex-col items-center">
-                            <img className="" src={`https://image.tmdb.org/t/p/w200${item.backdrop_path}`} alt="이미지" />
-                            <p className="font-bold text-center text-lg">{item.title}</p>
-                            <p className="text-ml text-gray-500">{item.release_date}</p>
-                        </div>
-                      </Link>
-                  </article>
-              ))}
-          </Slider>
+        {isLoading ? 
+        <div className="flex flex-col items-center justify-center py-16">
+          <ClimbingBoxLoader
+          size={20}
+          color="#032541"
+          aria-label="Loading Spinner"
+          data-testid="loader"
+          />
+          Loading...
         </div>
+        : 
+        <div className="w-full h-[350px] bg-main flex flex-col justify-center">
+        <Slider {...settings}>
+            {lists.map((item, index) => (
+                <article key={index} className="w-full flex justify-center">
+                    <Link to={`/detail/${item.id}`} key={item.id}>
+                      <div className="flex flex-col items-center">
+                          <img className="" src={`https://image.tmdb.org/t/p/w200${item.backdrop_path}`} alt="이미지" />
+                          <p className="font-bold text-center text-lg">{item.title}</p>
+                          <p className="text-ml text-gray-500">{item.release_date}</p>
+                      </div>
+                    </Link>
+                </article>
+            ))}
+        </Slider>
+      </div>}
       </div>
     </div>
   );

@@ -52,12 +52,12 @@ export default function Detail() {
                     {/* 제목 */}
                     <div className="flex space-x-2">
                         <h1 className="font-bold text-3xl">{data?.title}</h1>
-                        <h2 className="text-2xl">({data?.release_date.split("-")[0]})</h2>
+                        <h2 className="text-2xl">({data?.release_date?.split("-")[0]})</h2>
                     </div>
                     {/* 개봉일, 장르, 러닝타임 */}
                     <div className="flex space-x-2">
                         {/* 개봉일 */}
-                        <span>{data?.release_date.replaceAll("-","/")}</span>
+                        <span>{data?.release_date?.replaceAll("-","/")}</span>
                         {/* 구분자 win+;*/}
                         <span>•</span>
                         {/* 장르 */}

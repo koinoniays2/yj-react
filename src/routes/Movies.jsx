@@ -1,13 +1,7 @@
-import React from 'react'
-import NavPage from '../components/NavPage'
+import TopBar from "../components/TopBar";
 
 export default function Movies() {
   return (
-    <>
-        <NavPage />
-        <div className="w-full py-32 flex justify-center">
-            <h1 className="text-3xl font-bold">Movies</h1>
-        </div>
-    </>
+    <TopBar url="https://api.themoviedb.org/3/movie/now_playing?language=ko-KR&page=" name="movie"/>
   )
 }

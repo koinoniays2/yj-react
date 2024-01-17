@@ -4,6 +4,7 @@ import NotFound from "./routes/NotFound";
 import Movies from "./routes/Movies";
 import TV from "./routes/TV";
 import Detail from "./components/Detail";
+import Search from "./routes/Search";
 
 const router = createBrowserRouter([
     {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
         {
           path: "/detail/:id", // 주소창에 변수를 넣는것 /:변수명
           element: <Detail />
+        },
+        {
+          path: "/search",
+          element: <Search />
         },
       ]
     }

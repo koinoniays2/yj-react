@@ -1,6 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function SearchPage() {
+  const navigate = useNavigate();
+  const [keyword, setKeyword] = useState();
+
+  const handleClick = () => {
+    // Link to={`/detail/${item.id}` 경로로 전달하는 방법 대신 쿼리로 전달하는 방법
+    navigate(`/search?keyword=${keyword}`);
+  }
+  const handleChange = (e) => {
+    setKeyword(e.target.value); // input에서 검색어를 받아준다
+  }
+  const handleEnterKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleClick();
+    }
+  };
   return (
     <div className='w-full flex justify-center'>
       {/* 이미지 div */}
@@ -13,9 +29,11 @@ export default function SearchPage() {
             <h2 className='text-[32px] font-semibold'>Millions of movies, Tv shows and people to discover. Explore now.</h2>
           </div>
           {/* 인풋박스 */}
-          <div className='relative'>
-            <input className="w-full py-3 px-4 text-gray-900 outline-none rounded-3xl" type="text" placeholder="Search for movie, TV show, person ..." />
-            <button className="absolute text-black right-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 py-3 px-6 rounded-3xl font-semibold hover:text-black">Search</button>
+          <div className='relative' onKeyDown={handleEnterKeyPress}>
+            <input onChange={handleChange}
+            className="w-full py-3 px-4 text-gray-900 outline-none rounded-3xl" type="text" placeholder="Search for movie, TV show, person ..." />
+            <button onClick={handleClick}
+            className="absolute text-black right-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 py-3 px-6 rounded-3xl font-semibold hover:text-black">Search</button>
           </div>
         </div>
         <div></div>

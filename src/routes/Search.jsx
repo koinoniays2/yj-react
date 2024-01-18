@@ -12,7 +12,7 @@ export default function Search() {
   // RLSearchParams 객체 : URL의 쿼리 매개변수를 다룰 수 있는 객체, 쿼리 문자열에서 특정 매개변수를 추출하거나, 매개변수를 추가, 제거, 수정하는 등의 작업 가능
   const keyword = search.get("keyword"); // 객체로부터 navigate에서 설정했던 keyword쿼리 값을 가져옴
   // console.log(search);
-//   console.log(keyword);
+  // console.log(keyword);
   
   // 인풋박스 검색
   const navigate = useNavigate();

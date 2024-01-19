@@ -1,4 +1,4 @@
-import CircularProgress from "./CircularProgress";
+import CircularProg from "./CircularProg";
 
 export default function Item({list}){
     return (
@@ -17,7 +17,7 @@ export default function Item({list}){
                 <p className="text-sm">{list.release_date ? list.release_date : list.first_air_date}</p>
                 {/* 좋아요 평가 */}
                 <div className="absolute -top-5 left-2">
-                  <CircularProgress rate={Math.floor(list.vote_average*10)} />
+                  <CircularProg rate={Math.floor(list.vote_average*10)} />
                 </div>
               </div>
             </div>

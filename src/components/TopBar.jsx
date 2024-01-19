@@ -5,10 +5,12 @@ import CircularProg from "../components/CircularProg";
 import Pagination from "react-js-pagination";
 import "../routes/Paging.css"
 import { Link } from "react-router-dom";
+import { Skeleton } from "@chakra-ui/react";
 
 export default function TopBar(props) {
   const [lists, setLists] = useState();
   const [page, setPage] = useState(1);
+  const [isLoding, setIsLoding] = useState(true);
   useEffect(() => {
     const url =
       `${props.url}${page}`;
@@ -28,6 +30,9 @@ export default function TopBar(props) {
         setLists(json);
       })
       .catch((err) => console.error("error:" + err));
+      setTimeout(() => {
+        setIsLoding(false);
+      }, 1000);
   }, [page, props.url]);
 
   const handlePageChange = (page) => {
@@ -42,8 +47,10 @@ export default function TopBar(props) {
           {lists?.results?.map((list) => (
             <div
               key={list.id}
-              className="w-[180px] h-[340px] rounded-lg shadow-lg overflow-hidden"
-            >
+              className="w-[180px] h-[340px] rounded-lg shadow-lg overflow-hidden">
+              {isLoding ? (
+                  <Skeleton width="180px" height="340px" rounded="xl" />) : (
+            <>
               {/* 위 : 그림 */}
               <div className="w-full h-[250px]">
                 <Link to={props.name === "movie" && `/detail/${list.id}`}>
@@ -65,6 +72,8 @@ export default function TopBar(props) {
                   <CircularProg rate={Math.round(list.vote_average) * 10} />
                 </div>
               </div>
+            </>
+          )}
             </div>
           ))}
         </div>
